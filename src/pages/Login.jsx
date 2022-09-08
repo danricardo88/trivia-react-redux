@@ -7,12 +7,12 @@ class Login extends Component {
   state = {
     email: '',
     buttonDisabled: true,
-    password: '',
+    name: '',
   };
 
   isValidEmail = () => {
-    const { email, password } = this.state;
-    if (email && password) {
+    const { email, name } = this.state;
+    if (email && name) {
       this.setState({
         buttonDisabled: false,
       });
@@ -33,7 +33,7 @@ class Login extends Component {
     event.preventDefault();
     const { history, dispatch } = this.props;
     dispatch(playerReducer(this.state));
-    history.push('/carteira');
+    history.push('/main');
   };
 
   render() {
@@ -46,22 +46,22 @@ class Login extends Component {
         <form className="form login" onSubmit={ this.submitButton }>
           <h2>Trivia</h2>
           <label htmlFor="email">
-            Email:
+            Name:
             <input
               className="input"
-              name="email"
+              name="name"
               data-testid="input-player-name"
-              type="email"
+              type="name"
               onChange={ this.handleChange }
             />
           </label>
           <label htmlFor="senha">
-            Senha:
+            Email
             <input
               className="input"
               minLength="6"
-              name="password"
-              type="password"
+              name="email"
+              type="text"
               onChange={ this.handleChange }
               data-testid="input-gravatar-email"
             />
