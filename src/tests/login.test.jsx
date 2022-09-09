@@ -60,8 +60,8 @@ describe('Login test', () => {
 
   it('Header test', () => {
     renderWithRouterAndRedux(<Main />);
-    const header = screen.getByRole('heading', { name: 'Header' }, { level: 2 });
-    expect(header).toBeInTheDocument();
+    const headerImg = screen.getByRole('img', {  name: /profile pic/i})
+    expect(headerImg).toBeInTheDocument();
 
   });
 });
