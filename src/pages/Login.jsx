@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { playerReducer } from '../redux/actions';
+import fetchToken from '../services/triviaToken';
 
 class Login extends Component {
   state = {
@@ -32,6 +33,9 @@ class Login extends Component {
   submitButton = async (event) => {
     event.preventDefault();
     const { history, dispatch } = this.props;
+    const request = await fetchToken();
+    const { token } = request;
+    localStorage.setItem('token', token);
     dispatch(playerReducer(this.state));
     history.push('/main');
   };
