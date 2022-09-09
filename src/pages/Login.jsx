@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { playerReducer } from '../redux/actions';
 import fetchToken from '../services/triviaToken';
+import logo from '../trivia.png';
 
 class Login extends Component {
   state = {
@@ -47,6 +48,7 @@ class Login extends Component {
 
     return (
       <div className="center">
+        <img src={ logo } className="App-logo" alt="logo" />
         <form className="form login" onSubmit={ this.submitButton }>
           <h2>Trivia</h2>
           <label htmlFor="email">
@@ -60,7 +62,7 @@ class Login extends Component {
             />
           </label>
           <label htmlFor="senha">
-            Email
+            Email:
             <input
               className="input"
               minLength="6"
@@ -79,6 +81,7 @@ class Login extends Component {
             Play
           </button>
           <button
+            className="input btn"
             data-testid="btn-settings"
             type="button"
             onClick={ () => {
