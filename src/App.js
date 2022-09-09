@@ -3,12 +3,14 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
 import Main from './pages/Main';
+import Settings from './pages/Settings';
 
 export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route path="/main" component={ Main } />
+      <Route exact path="/main" component={ Main } />
+      <Route exact path="/settings" component={ Settings } />
     </Switch>
   );
 }
