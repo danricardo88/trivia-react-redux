@@ -76,7 +76,17 @@ class Login extends Component {
             data-testid="btn-play"
             disabled={ buttonDisabled }
           >
-            Entrar
+            Play
+          </button>
+          <button
+            data-testid="btn-settings"
+            type="button"
+            onClick={ () => {
+              const { history } = this.props;
+              history.push('/settings');
+            } }
+          >
+            Settings
           </button>
         </form>
       </div>
