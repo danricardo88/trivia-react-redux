@@ -51,9 +51,10 @@ class Login extends Component {
         <img src={ logo } className="App-logo" alt="logo" />
         <form className="form login" onSubmit={ this.submitButton }>
           <h2>Trivia</h2>
-          <label htmlFor="email">
+          <label htmlFor="input-player-name">
             Name:
             <input
+              id="input-player-name"
               className="input"
               name="name"
               data-testid="input-player-name"
@@ -61,11 +62,12 @@ class Login extends Component {
               onChange={ this.handleChange }
             />
           </label>
-          <label htmlFor="senha">
+          <label htmlFor="input-gravatar-email">
             Email:
             <input
+              id="input-gravatar-email"
               className="input"
-              minLength="6"
+              // minLength="6"
               name="email"
               type="text"
               onChange={ this.handleChange }
