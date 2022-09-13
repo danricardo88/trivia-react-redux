@@ -10,9 +10,10 @@ class Main extends Component {
   constructor() {
     super();
     this.state = {
+      buttonIsVisible: false,
+      counter: 0,
       isLoading: true,
       questions: [],
-      counter: 0,
     };
   }
 
@@ -45,8 +46,14 @@ class Main extends Component {
     });
   };
 
+  changeButtonIsVisible = () => {
+    this.setState((prevState) => ({
+      buttonIsVisible: !prevState.buttonIsVisible,
+    }));
+  };
+
   render() {
-    const { questions, isLoading, counter } = this.state;
+    const { questions, isLoading, counter, buttonIsVisible } = this.state;
 
     const question = questions[counter];
 
@@ -56,15 +63,25 @@ class Main extends Component {
           ? <Loading /> : (
             <div>
               <Header />
-              <GameQuestions question={ question } />
-              <button
-                data-testid="btn-next"
-                type="button"
-                onClick={ this.handleClick }
-              >
-                Next
-              </button>
-              Main
+              <GameQuestions
+                changeButtonIsVisible={ this.changeButtonIsVisible }
+                question={ question }
+              />
+              {
+                buttonIsVisible && (
+                  <button
+                    data-testid="btn-next"
+                    type="button"
+                    onClick={ () => {
+                      this.handleClick();
+                      this.changeButtonIsVisible();
+                    } }
+                  >
+                    Next
+                  </button>
+
+                )
+              }
             </div>
           )}
       </main>
