@@ -35,6 +35,8 @@ class GameQuestions extends Component {
   render() {
     const { category, question, difficulty,
       allQuestions, correctAnswer, incorrectAnswers } = this.state;
+    const { changeButtonIsVisible } = this.props;
+
     return (
       <section>
         <h1 data-testid="question-category">{category}</h1>
@@ -45,6 +47,7 @@ class GameQuestions extends Component {
             if (gameAlternative === correctAnswer) {
               return (
                 <button
+                  onClick={ () => changeButtonIsVisible() }
                   key={ index }
                   type="button"
                   data-testid="correct-answer"
@@ -60,6 +63,7 @@ class GameQuestions extends Component {
             });
             return (
               <button
+                onClick={ () => changeButtonIsVisible() }
                 key={ index }
                 type="button"
                 data-testid={ `wrong-answer-${position}` }
@@ -82,6 +86,7 @@ GameQuestions.propTypes = {
     incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
     question: PropTypes.string.isRequired,
   }).isRequired,
+  changeButtonIsVisible: PropTypes.func.isRequired,
 };
 
 export default GameQuestions;
